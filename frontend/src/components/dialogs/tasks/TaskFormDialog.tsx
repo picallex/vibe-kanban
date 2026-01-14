@@ -50,6 +50,14 @@ import type {
   ExecutorProfileId,
   ImageResponse,
 } from 'shared/types';
+import { assigneeApi } from '@/custom/hooks/useTaskAssignee';
+import {
+  ModuleSelector,
+  EndpointAlert,
+  usePromptGenerator,
+  useEndpointAnalyzer,
+  type PicallexModule,
+} from '@/custom';
 
 interface Task {
   id: string;
@@ -81,6 +89,8 @@ type TaskFormValues = {
   executorProfileId: ExecutorProfileId | null;
   repoBranches: RepoBranch[];
   autoStart: boolean;
+  assignee: string; // JPBot custom field
+  selectedModule: PicallexModule | null; // JPBot: Picallex API module
 };
 
 const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
@@ -123,6 +133,26 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
       .map((c) => ({ repoId: c.repoId, branch: c.targetBranch! }));
   }, [repoBranchConfigs]);
 
+  // JPBot: State for loading assignee in edit mode
+  const [initialAssignee, setInitialAssignee] = useState<string>('');
+
+  // JPBot: Load assignee when editing a task
+  useEffect(() => {
+    if (mode !== 'edit') return;
+    const loadAssignee = async () => {
+      try {
+        const data = await assigneeApi.get(props.task.id);
+        if (data.assignee) {
+          setInitialAssignee(data.assignee);
+          form.setFieldValue('assignee', data.assignee);
+        }
+      } catch {
+        // No assignee set, ignore
+      }
+    };
+    loadAssignee();
+  }, [mode, props]);
+
   // Get default form values based on mode
   const defaultValues = useMemo((): TaskFormValues => {
     const baseProfile = system.config?.executor_profile || null;
@@ -136,6 +166,8 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
           executorProfileId: baseProfile,
           repoBranches: defaultRepoBranches,
           autoStart: false,
+          assignee: initialAssignee,
+          selectedModule: null,
         };
 
       case 'duplicate':
@@ -146,6 +178,8 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
           executorProfileId: baseProfile,
           repoBranches: defaultRepoBranches,
           autoStart: true,
+          assignee: '',
+          selectedModule: null,
         };
 
       case 'subtask':
@@ -158,25 +192,55 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
           executorProfileId: baseProfile,
           repoBranches: defaultRepoBranches,
           autoStart: true,
+          assignee: '',
+          selectedModule: null,
         };
     }
-  }, [mode, props, system.config?.executor_profile, defaultRepoBranches]);
+  }, [mode, props, system.config?.executor_profile, defaultRepoBranches, initialAssignee]);
+
+  // JPBot: Helper to save assignee
+  const saveAssignee = async (taskId: string, assigneeValue: string) => {
+    if (assigneeValue.trim()) {
+      try {
+        await assigneeApi.set(taskId, { assignee: assigneeValue.trim() });
+      } catch (e) {
+        console.error('Failed to save assignee:', e);
+      }
+    } else {
+      try {
+        await assigneeApi.remove(taskId);
+      } catch {
+        // Ignore - might not exist
+      }
+    }
+  };
 
   // Form submission handler
   const handleSubmit = async ({ value }: { value: TaskFormValues }) => {
+    // JPBot: Use enriched description if module is selected, otherwise use raw description
+    const finalDescription = value.selectedModule && enrichedDescription
+      ? enrichedDescription
+      : value.description;
+
     if (editMode) {
       await updateTask.mutateAsync(
         {
           taskId: props.task.id,
           data: {
             title: value.title,
-            description: value.description,
+            description: finalDescription,
             status: value.status,
             parent_workspace_id: null,
             image_ids: images.length > 0 ? images.map((img) => img.id) : null,
           },
         },
-        { onSuccess: () => modal.remove() }
+        {
+          onSuccess: async () => {
+            // JPBot: Save assignee after task update
+            await saveAssignee(props.task.id, value.assignee);
+            modal.remove();
+          },
+        }
       );
     } else {
       const imageIds =
@@ -184,7 +248,7 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
       const task = {
         project_id: projectId,
         title: value.title,
-        description: value.description,
+        description: finalDescription,
         status: null,
         parent_workspace_id:
           mode === 'subtask' ? props.parentTaskAttemptId : null,
@@ -203,10 +267,26 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
             executor_profile_id: value.executorProfileId!,
             repos,
           },
-          { onSuccess: () => modal.remove() }
+          {
+            onSuccess: async (result) => {
+              // JPBot: Save assignee after task creation
+              if (value.assignee.trim()) {
+                await saveAssignee(result.id, value.assignee);
+              }
+              modal.remove();
+            },
+          }
         );
       } else {
-        await createTask.mutateAsync(task, { onSuccess: () => modal.remove() });
+        await createTask.mutateAsync(task, {
+          onSuccess: async (result) => {
+            // JPBot: Save assignee after task creation
+            if (value.assignee.trim()) {
+              await saveAssignee(result.id, value.assignee);
+            }
+            modal.remove();
+          },
+        });
       }
     }
   };
@@ -239,6 +319,22 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
   const isSubmitting = useStore(form.store, (state) => state.isSubmitting);
   const isDirty = useStore(form.store, (state) => state.isDirty);
   const canSubmit = useStore(form.store, (state) => state.canSubmit);
+
+  // JPBot: Watch form values for prompt enrichment
+  const selectedModule = useStore(form.store, (state) => state.values.selectedModule);
+  const currentDescription = useStore(form.store, (state) => state.values.description);
+
+  // JPBot: Prompt generator hook - enriches description with API context
+  const { enrichedDescription, hasModuleContext } = usePromptGenerator({
+    moduleId: selectedModule,
+    description: currentDescription,
+  });
+
+  // JPBot: Endpoint analyzer hook - detects missing endpoints
+  const { missingEndpoints } = useEndpointAnalyzer({
+    moduleId: selectedModule,
+    description: currentDescription,
+  });
 
   // Load images for edit mode
   useEffect(() => {
@@ -436,6 +532,31 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
             )}
           </form.Field>
 
+          {/* JPBot: Assignee field */}
+          <form.Field name="assignee">
+            {(field) => (
+              <Input
+                id="task-assignee"
+                value={field.state.value}
+                onChange={(e) => field.handleChange(e.target.value)}
+                placeholder="Assignee (responsable)"
+                disabled={isSubmitting}
+                className="text-sm"
+              />
+            )}
+          </form.Field>
+
+          {/* JPBot: Picallex Module Selector */}
+          <form.Field name="selectedModule">
+            {(field) => (
+              <ModuleSelector
+                value={field.state.value}
+                onChange={(value) => field.handleChange(value)}
+                disabled={isSubmitting}
+              />
+            )}
+          </form.Field>
+
           {/* Description */}
           <form.Field name="description">
             {(field) => (
@@ -456,6 +577,19 @@ const TaskFormDialogImpl = NiceModal.create<TaskFormDialogProps>((props) => {
               </div>
             )}
           </form.Field>
+
+          {/* JPBot: Missing Endpoint Alert */}
+          {selectedModule && missingEndpoints.length > 0 && (
+            <EndpointAlert missingEndpoints={missingEndpoints} />
+          )}
+
+          {/* JPBot: Module context indicator */}
+          {selectedModule && hasModuleContext && (
+            <div className="text-xs text-muted-foreground">
+              El prompt incluirá contexto de API del módulo seleccionado
+            </div>
+          )}
+
           {/* Edit mode status */}
           {editMode && (
             <form.Field name="status">

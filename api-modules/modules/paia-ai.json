@@ -1,0 +1,118 @@
+{
+  "module": "paia-ai",
+  "label": "PAIA & AI",
+  "version": "0.0.1",
+  "generatedAt": "2026-01-14T20:29:01.271Z",
+  "endpoints": [
+    {
+      "operationId": "assistantOptions.getRetailAssistantsOptions",
+      "method": "POST",
+      "path": "/paia/list-assistants-options",
+      "tags": [
+        "AssistantOptions"
+      ]
+    },
+    {
+      "operationId": "assistantOptions.updateAssistantOption",
+      "method": "POST",
+      "path": "/paia/update-assistant-option",
+      "tags": [
+        "AssistantOptions"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "assistantOptions.createAssistantOption",
+      "method": "POST",
+      "path": "/paia/create-assistant-option",
+      "tags": [
+        "AssistantOptions"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "assistantOptions.linkOptionToAssistant",
+      "method": "POST",
+      "path": "/paia/link-option-to-assistant",
+      "tags": [
+        "AssistantOptions"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "assistantOptions.unlinkOptionFromAssistant",
+      "method": "POST",
+      "path": "/paia/unlink-option-from-assistant",
+      "tags": [
+        "AssistantOptions"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "assistantProducts.getPRoducts",
+      "method": "GET",
+      "path": "/paia/get-products",
+      "tags": [
+        "AssistantProducts"
+      ]
+    },
+    {
+      "operationId": "assistantProducts.linkProductToAssistant",
+      "method": "POST",
+      "path": "/paia/link-product-to-assistant",
+      "tags": [
+        "AssistantProducts"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "assistantProducts.unlinkProductFromAssistant",
+      "method": "POST",
+      "path": "/paia/unlink-product-from-assistant",
+      "tags": [
+        "AssistantProducts"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "customAssistants.createNewBaseAndCustomAssistant",
+      "method": "POST",
+      "path": "/paia/create-custom-assistant",
+      "tags": [
+        "CustomAssistants"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "generalAi.generatePromptFromInput",
+      "method": "POST",
+      "path": "/paia/generate-prompt",
+      "tags": [
+        "GeneralAi"
+      ]
+    },
+    {
+      "operationId": "paia.getPermissions",
+      "method": "GET",
+      "path": "/paia/get-permissions",
+      "tags": [
+        "Paia"
+      ]
+    }
+  ],
+  "tokenCount": 464
+}

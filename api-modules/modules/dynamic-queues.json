@@ -1,0 +1,315 @@
+{
+  "module": "dynamic-queues",
+  "label": "Dynamic Queues",
+  "version": "0.0.1",
+  "generatedAt": "2026-01-14T20:29:01.272Z",
+  "endpoints": [
+    {
+      "operationId": "dynamicQueues.listQueues",
+      "method": "GET",
+      "path": "/queues/list",
+      "tags": [
+        "DynamicQueues"
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.listRules",
+      "method": "GET",
+      "path": "/queues/rules/list",
+      "tags": [
+        "DynamicQueues"
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.registerRule",
+      "method": "GET",
+      "path": "/queues/rules/create",
+      "tags": [
+        "DynamicQueues"
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.editRule",
+      "method": "POST",
+      "path": "/queues/rule/{ruleId}",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "ruleId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.listOrigins",
+      "method": "GET",
+      "path": "/queues/origins/list",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "channel",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.createQueue",
+      "method": "POST",
+      "path": "/queues/create",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.addUsersToQueue",
+      "method": "POST",
+      "path": "/queues/{queue}/users",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.linkGroupToQueue",
+      "method": "POST",
+      "path": "/queues/{queue}/groups",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.unlinkGroupFromQueue",
+      "method": "DELETE",
+      "path": "/queues/{queue}/groups/unlink/{linkId}",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        },
+        {
+          "name": "linkId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.removeUsersFromQueue",
+      "method": "POST",
+      "path": "/queues/{queue}/users/remove",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.listCandidatesForQueue",
+      "method": "GET",
+      "path": "/queues/{queue}/users/candidates",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.listCandidateGroupsForQueue",
+      "method": "GET",
+      "path": "/queues/{queue}/groups/candidates",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.editQueue",
+      "method": "POST",
+      "path": "/queues/{queue}",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.linkRuleToQueue",
+      "method": "POST",
+      "path": "/queues/{queue}/rules",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.linkOriginToQueue",
+      "method": "POST",
+      "path": "/queues/{queue}/origin",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.editOriginLink",
+      "method": "POST",
+      "path": "/queues/{queue}/origin/edit",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "dynamicQueues.unlinkOriginFromQueue",
+      "method": "DELETE",
+      "path": "/queues/{queue}/origin/unlink/{linkId}",
+      "tags": [
+        "DynamicQueues"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        },
+        {
+          "name": "linkId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "dynamicQueues.listResults",
+      "method": "GET",
+      "path": "/queues/results",
+      "tags": [
+        "DynamicQueues"
+      ]
+    },
+    {
+      "operationId": "dynamicQueuesChangelog.getLogs",
+      "method": "GET",
+      "path": "/queues/changelog/{queue}",
+      "tags": [
+        "DynamicQueuesChangelog"
+      ],
+      "parameters": [
+        {
+          "name": "queue",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    }
+  ],
+  "tokenCount": 998
+}

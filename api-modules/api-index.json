@@ -1,0 +1,677 @@
+{
+  "version": "0.0.1",
+  "source": "local",
+  "generatedAt": "2026-01-14T20:29:01.269Z",
+  "totalEndpoints": 75,
+  "modules": [
+    {
+      "id": "paia-ai",
+      "label": "PAIA & AI",
+      "endpointCount": 11,
+      "tags": [
+        "AssistantOptions",
+        "AssistantProducts",
+        "CustomAssistants",
+        "GeneralAi",
+        "Paia"
+      ]
+    },
+    {
+      "id": "auditor",
+      "label": "Auditor",
+      "endpointCount": 16,
+      "tags": [
+        "Auditor",
+        "AgentAuditor"
+      ]
+    },
+    {
+      "id": "dynamic-queues",
+      "label": "Dynamic Queues",
+      "endpointCount": 19,
+      "tags": [
+        "DynamicQueues",
+        "DynamicQueuesChangelog"
+      ]
+    },
+    {
+      "id": "integrations",
+      "label": "Integrations",
+      "endpointCount": 16,
+      "tags": [
+        "HubSpot",
+        "Schedules",
+        "Campana"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastructure",
+      "endpointCount": 7,
+      "tags": [
+        "MyflexPbx",
+        "Media",
+        "Products"
+      ]
+    },
+    {
+      "id": "system",
+      "label": "System",
+      "endpointCount": 6,
+      "tags": [
+        "ApiCheck",
+        "HelpCenter",
+        "MonitoringPanel"
+      ]
+    }
+  ],
+  "endpoints": [
+    {
+      "m": "GET",
+      "p": "/autoAudit/get-audits",
+      "t": [
+        "AgentAuditor"
+      ],
+      "o": "agentAuditor.getForLeadAndRecordings"
+    },
+    {
+      "m": "GET",
+      "p": "/autoAudit/get-conversation/{requestId}",
+      "t": [
+        "AgentAuditor"
+      ],
+      "o": "agentAuditor.getAuditoryConversation"
+    },
+    {
+      "m": "GET",
+      "p": "/autoAudit/get-last-summary",
+      "t": [
+        "AgentAuditor"
+      ],
+      "o": "agentAuditor.getLastSummary"
+    },
+    {
+      "m": "GET",
+      "p": "/autoAudit/get-transcript-for-audit/{auditId}",
+      "t": [
+        "AgentAuditor"
+      ],
+      "o": "agentAuditor.getTranscriptForAudit"
+    },
+    {
+      "m": "GET",
+      "p": "/welcome",
+      "t": [
+        "ApiCheck"
+      ],
+      "o": "apiCheck.welcome"
+    },
+    {
+      "m": "GET",
+      "p": "/secured",
+      "t": [
+        "ApiCheck"
+      ],
+      "o": "apiCheck.secured"
+    },
+    {
+      "m": "GET",
+      "p": "/withIdentity",
+      "t": [
+        "ApiCheck"
+      ],
+      "o": "apiCheck.withIdentity"
+    },
+    {
+      "m": "POST",
+      "p": "/generate-api-key",
+      "t": [
+        "ApiCheck"
+      ],
+      "o": "apiCheck.generateApiKey"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/list-assistants-options",
+      "t": [
+        "AssistantOptions"
+      ],
+      "o": "assistantOptions.getRetailAssistantsOptions"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/update-assistant-option",
+      "t": [
+        "AssistantOptions"
+      ],
+      "o": "assistantOptions.updateAssistantOption"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/create-assistant-option",
+      "t": [
+        "AssistantOptions"
+      ],
+      "o": "assistantOptions.createAssistantOption"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/link-option-to-assistant",
+      "t": [
+        "AssistantOptions"
+      ],
+      "o": "assistantOptions.linkOptionToAssistant"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/unlink-option-from-assistant",
+      "t": [
+        "AssistantOptions"
+      ],
+      "o": "assistantOptions.unlinkOptionFromAssistant"
+    },
+    {
+      "m": "GET",
+      "p": "/paia/get-products",
+      "t": [
+        "AssistantProducts"
+      ],
+      "o": "assistantProducts.getPRoducts"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/link-product-to-assistant",
+      "t": [
+        "AssistantProducts"
+      ],
+      "o": "assistantProducts.linkProductToAssistant"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/unlink-product-from-assistant",
+      "t": [
+        "AssistantProducts"
+      ],
+      "o": "assistantProducts.unlinkProductFromAssistant"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/get-auditor-list",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.getAuditsForView"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/send-feedback",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.sendFeedback"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/change-lead-management",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.changeLeadManagement"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/mark-auditories-as-archived",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.markAuditoriesAsArchived"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/mark-auditories-as-not-archived",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.markAuditoriesAsNotArchived"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/get-auditor-list-for-supervisor",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.getAuditoriesListForSupervisor"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/get-auditor-list-for-retail",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.getAuditoriesListForRetail"
+    },
+    {
+      "m": "POST",
+      "p": "/auditor/get-auditor-list-for-user",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.getAuditoriesListForUser"
+    },
+    {
+      "m": "GET",
+      "p": "/auditor/describe/{requestId}",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.describeAuditoryForRequest"
+    },
+    {
+      "m": "GET",
+      "p": "/auditor/get-conversation-options/{requestId}",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.getOptionsForRequest"
+    },
+    {
+      "m": "GET",
+      "p": "/auditor/get-agent-audited-users-list",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.getUsersWithAgentAuditories"
+    },
+    {
+      "m": "POST",
+      "p": "/autoAudit/agent-audit-lead-recording",
+      "t": [
+        "Auditor"
+      ],
+      "o": "auditor.agentAuditRecordingForLead"
+    },
+    {
+      "m": "GET",
+      "p": "/campanas",
+      "s": "[AI] Listar campañas",
+      "t": [
+        "Campana"
+      ],
+      "o": "campana.index"
+    },
+    {
+      "m": "GET",
+      "p": "/campanas/search",
+      "s": "[AI] Buscar campañas",
+      "t": [
+        "Campana"
+      ],
+      "o": "campana.search"
+    },
+    {
+      "m": "GET",
+      "p": "/campanas/types",
+      "s": "[AI] Listar tipos de campaña",
+      "t": [
+        "Campana"
+      ],
+      "o": "campana.types"
+    },
+    {
+      "m": "PUT",
+      "p": "/campanas/{id}",
+      "s": "[AI] Actualizar campaña",
+      "t": [
+        "Campana"
+      ],
+      "o": "campana.update"
+    },
+    {
+      "m": "POST",
+      "p": "/campanas/{id}/labels",
+      "s": "[AI] Asignar etiqueta a campaña",
+      "t": [
+        "Campana"
+      ],
+      "o": "campana.assignLabel"
+    },
+    {
+      "m": "DELETE",
+      "p": "/campanas/{id}/labels/{labelId}",
+      "s": "[AI] Remover etiqueta de campaña",
+      "t": [
+        "Campana"
+      ],
+      "o": "campana.removeLabel"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/create-custom-assistant",
+      "t": [
+        "CustomAssistants"
+      ],
+      "o": "customAssistants.createNewBaseAndCustomAssistant"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/list",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.listQueues"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/rules/list",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.listRules"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/rules/create",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.registerRule"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/rule/{ruleId}",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.editRule"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/origins/list",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.listOrigins"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/create",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.createQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}/users",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.addUsersToQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}/groups",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.linkGroupToQueue"
+    },
+    {
+      "m": "DELETE",
+      "p": "/queues/{queue}/groups/unlink/{linkId}",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.unlinkGroupFromQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}/users/remove",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.removeUsersFromQueue"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/{queue}/users/candidates",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.listCandidatesForQueue"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/{queue}/groups/candidates",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.listCandidateGroupsForQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.editQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}/rules",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.linkRuleToQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}/origin",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.linkOriginToQueue"
+    },
+    {
+      "m": "POST",
+      "p": "/queues/{queue}/origin/edit",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.editOriginLink"
+    },
+    {
+      "m": "DELETE",
+      "p": "/queues/{queue}/origin/unlink/{linkId}",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.unlinkOriginFromQueue"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/results",
+      "t": [
+        "DynamicQueues"
+      ],
+      "o": "dynamicQueues.listResults"
+    },
+    {
+      "m": "GET",
+      "p": "/queues/changelog/{queue}",
+      "t": [
+        "DynamicQueuesChangelog"
+      ],
+      "o": "dynamicQueuesChangelog.getLogs"
+    },
+    {
+      "m": "POST",
+      "p": "/paia/generate-prompt",
+      "t": [
+        "GeneralAi"
+      ],
+      "o": "generalAi.generatePromptFromInput"
+    },
+    {
+      "m": "GET",
+      "p": "/helpCenter/resources",
+      "t": [
+        "HelpCenter"
+      ],
+      "o": "helpCenter.getResourcesList"
+    },
+    {
+      "m": "GET",
+      "p": "/hubspot/get-permissions",
+      "t": [
+        "HubSpot"
+      ],
+      "o": "hubSpot.getPermissions"
+    },
+    {
+      "m": "GET",
+      "p": "/hubspot/users",
+      "t": [
+        "HubSpot"
+      ],
+      "o": "hubSpot.getUsers"
+    },
+    {
+      "m": "GET",
+      "p": "/campaign/media",
+      "t": [
+        "Media"
+      ],
+      "o": "media.listCampaignsMedia"
+    },
+    {
+      "m": "GET",
+      "p": "/monitoringPanel/get-panel-list",
+      "t": [
+        "MonitoringPanel"
+      ],
+      "o": "monitoringPanel.getChatAnalysis"
+    },
+    {
+      "m": "POST",
+      "p": "/myflex/did",
+      "t": [
+        "MyflexPbx"
+      ],
+      "o": "myflexPbx.getCustomerDidList"
+    },
+    {
+      "m": "POST",
+      "p": "/myflex/did/followme",
+      "s": "Edit DID Follow Me configuration",
+      "t": [
+        "MyflexPbx"
+      ],
+      "o": "myflexPbx.editDidFollowMe"
+    },
+    {
+      "m": "GET",
+      "p": "/myflex/customer",
+      "t": [
+        "MyflexPbx"
+      ],
+      "o": "myflexPbx.getCustomerList"
+    },
+    {
+      "m": "GET",
+      "p": "/myflex/extension",
+      "t": [
+        "MyflexPbx"
+      ],
+      "o": "myflexPbx.getExtensionList"
+    },
+    {
+      "m": "POST",
+      "p": "/myflex/followme",
+      "t": [
+        "MyflexPbx"
+      ],
+      "o": "myflexPbx.getFollowMeList"
+    },
+    {
+      "m": "GET",
+      "p": "/paia/get-permissions",
+      "t": [
+        "Paia"
+      ],
+      "o": "paia.getPermissions"
+    },
+    {
+      "m": "GET",
+      "p": "/campaign/products",
+      "t": [
+        "Products"
+      ],
+      "o": "products.listCampaignsProducts"
+    },
+    {
+      "m": "GET",
+      "p": "/companies/users",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.getUsers"
+    },
+    {
+      "m": "POST",
+      "p": "/salesforce/task",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.createSalesforceTask"
+    },
+    {
+      "m": "GET",
+      "p": "/salesforce/schedules/bookable-slots",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.getBookableSlots"
+    },
+    {
+      "m": "GET",
+      "p": "/salesforce/schedules/user-availability/{userId}",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.getUserAvailability"
+    },
+    {
+      "m": "POST",
+      "p": "/salesforce/schedules/weekly-availability",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.createWeeklyAvailability"
+    },
+    {
+      "m": "POST",
+      "p": "/salesforce/schedules/blocked-period",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.createBlockedPeriod"
+    },
+    {
+      "m": "POST",
+      "p": "/salesforce/schedules/book-appointment",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.bookAppointment"
+    },
+    {
+      "m": "DELETE",
+      "p": "/salesforce/schedules/{scheduleId}",
+      "t": [
+        "Schedules"
+      ],
+      "o": "schedules.deleteSchedule"
+    }
+  ]
+}

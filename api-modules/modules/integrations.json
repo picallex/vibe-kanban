@@ -1,0 +1,254 @@
+{
+  "module": "integrations",
+  "label": "Integrations",
+  "version": "0.0.1",
+  "generatedAt": "2026-01-14T20:29:01.272Z",
+  "endpoints": [
+    {
+      "operationId": "campana.index",
+      "method": "GET",
+      "path": "/campanas",
+      "summary": "[AI] Listar campañas",
+      "tags": [
+        "Campana"
+      ],
+      "description": "**AI-Generated (Pendiente validación)**\n\n> Este endpoint fue generado por IA y esta pendiente de validacion humana.\n> **Identificador:** `campanas.index`\n> **Creado:** 2026-01-12\n>\n> **Validaciones pe",
+      "parameters": [
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "campana.search",
+      "method": "GET",
+      "path": "/campanas/search",
+      "summary": "[AI] Buscar campañas",
+      "tags": [
+        "Campana"
+      ],
+      "description": "**AI-Generated (Pendiente validación)**\n\n> Este endpoint fue generado por IA y esta pendiente de validacion humana.\n> **Identificador:** `campanas.search`\n> **Creado:** 2026-01-12\n>\n> **Validaciones p",
+      "parameters": [
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "operationId": "campana.types",
+      "method": "GET",
+      "path": "/campanas/types",
+      "summary": "[AI] Listar tipos de campaña",
+      "tags": [
+        "Campana"
+      ],
+      "description": "**AI-Generated (Pendiente validación)**\n\n> Este endpoint fue generado por IA y esta pendiente de validacion humana.\n> **Identificador:** `campanas.types`\n> **Creado:** 2026-01-12\n>\n> **Validaciones pe"
+    },
+    {
+      "operationId": "campana.update",
+      "method": "PUT",
+      "path": "/campanas/{id}",
+      "summary": "[AI] Actualizar campaña",
+      "tags": [
+        "Campana"
+      ],
+      "description": "**AI-Generated (Pendiente validación)**\n\n> Este endpoint fue generado por IA y esta pendiente de validacion humana.\n> **Identificador:** `campanas.update`\n> **Creado:** 2026-01-12\n>\n> **Validaciones p",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {}
+    },
+    {
+      "operationId": "campana.assignLabel",
+      "method": "POST",
+      "path": "/campanas/{id}/labels",
+      "summary": "[AI] Asignar etiqueta a campaña",
+      "tags": [
+        "Campana"
+      ],
+      "description": "**AI-Generated (Pendiente validación)**\n\n> Este endpoint fue generado por IA y esta pendiente de validacion humana.\n> **Identificador:** `campanas.assignLabel`\n> **Creado:** 2026-01-12\n>\n> **Validacio",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "campana.removeLabel",
+      "method": "DELETE",
+      "path": "/campanas/{id}/labels/{labelId}",
+      "summary": "[AI] Remover etiqueta de campaña",
+      "tags": [
+        "Campana"
+      ],
+      "description": "**AI-Generated (Pendiente validación)**\n\n> Este endpoint fue generado por IA y esta pendiente de validacion humana.\n> **Identificador:** `campanas.removeLabel`\n> **Creado:** 2026-01-12\n>\n> **Validacio",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        },
+        {
+          "name": "labelId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "hubSpot.getPermissions",
+      "method": "GET",
+      "path": "/hubspot/get-permissions",
+      "tags": [
+        "HubSpot"
+      ]
+    },
+    {
+      "operationId": "hubSpot.getUsers",
+      "method": "GET",
+      "path": "/hubspot/users",
+      "tags": [
+        "HubSpot"
+      ]
+    },
+    {
+      "operationId": "schedules.getUsers",
+      "method": "GET",
+      "path": "/companies/users",
+      "tags": [
+        "Schedules"
+      ]
+    },
+    {
+      "operationId": "schedules.createSalesforceTask",
+      "method": "POST",
+      "path": "/salesforce/task",
+      "tags": [
+        "Schedules"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "schedules.getBookableSlots",
+      "method": "GET",
+      "path": "/salesforce/schedules/bookable-slots",
+      "tags": [
+        "Schedules"
+      ],
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "query",
+          "required": true,
+          "type": "integer"
+        },
+        {
+          "name": "date",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "slotDuration",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "bufferMinutes",
+          "in": "query",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "schedules.getUserAvailability",
+      "method": "GET",
+      "path": "/salesforce/schedules/user-availability/{userId}",
+      "tags": [
+        "Schedules"
+      ],
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "schedules.createWeeklyAvailability",
+      "method": "POST",
+      "path": "/salesforce/schedules/weekly-availability",
+      "tags": [
+        "Schedules"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "schedules.createBlockedPeriod",
+      "method": "POST",
+      "path": "/salesforce/schedules/blocked-period",
+      "tags": [
+        "Schedules"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "schedules.bookAppointment",
+      "method": "POST",
+      "path": "/salesforce/schedules/book-appointment",
+      "tags": [
+        "Schedules"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "schedules.deleteSchedule",
+      "method": "DELETE",
+      "path": "/salesforce/schedules/{scheduleId}",
+      "tags": [
+        "Schedules"
+      ],
+      "parameters": [
+        {
+          "name": "scheduleId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "tokenCount": 1135
+}

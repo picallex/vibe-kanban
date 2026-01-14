@@ -1,0 +1,58 @@
+{
+  "module": "system",
+  "label": "System",
+  "version": "0.0.1",
+  "generatedAt": "2026-01-14T20:29:01.273Z",
+  "endpoints": [
+    {
+      "operationId": "apiCheck.welcome",
+      "method": "GET",
+      "path": "/welcome",
+      "tags": [
+        "ApiCheck"
+      ]
+    },
+    {
+      "operationId": "apiCheck.secured",
+      "method": "GET",
+      "path": "/secured",
+      "tags": [
+        "ApiCheck"
+      ]
+    },
+    {
+      "operationId": "apiCheck.withIdentity",
+      "method": "GET",
+      "path": "/withIdentity",
+      "tags": [
+        "ApiCheck"
+      ]
+    },
+    {
+      "operationId": "apiCheck.generateApiKey",
+      "method": "POST",
+      "path": "/generate-api-key",
+      "tags": [
+        "ApiCheck"
+      ],
+      "requestBody": {}
+    },
+    {
+      "operationId": "helpCenter.getResourcesList",
+      "method": "GET",
+      "path": "/helpCenter/resources",
+      "tags": [
+        "HelpCenter"
+      ]
+    },
+    {
+      "operationId": "monitoringPanel.getChatAnalysis",
+      "method": "GET",
+      "path": "/monitoringPanel/get-panel-list",
+      "tags": [
+        "MonitoringPanel"
+      ]
+    }
+  ],
+  "tokenCount": 192
+}

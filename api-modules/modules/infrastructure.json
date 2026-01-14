@@ -1,0 +1,78 @@
+{
+  "module": "infrastructure",
+  "label": "Infrastructure",
+  "version": "0.0.1",
+  "generatedAt": "2026-01-14T20:29:01.273Z",
+  "endpoints": [
+    {
+      "operationId": "media.listCampaignsMedia",
+      "method": "GET",
+      "path": "/campaign/media",
+      "tags": [
+        "Media"
+      ]
+    },
+    {
+      "operationId": "myflexPbx.getCustomerDidList",
+      "method": "POST",
+      "path": "/myflex/did",
+      "tags": [
+        "MyflexPbx"
+      ],
+      "requestBody": {}
+    },
+    {
+      "operationId": "myflexPbx.editDidFollowMe",
+      "method": "POST",
+      "path": "/myflex/did/followme",
+      "summary": "Edit DID Follow Me configuration",
+      "tags": [
+        "MyflexPbx"
+      ],
+      "requestBody": {
+        "required": true
+      }
+    },
+    {
+      "operationId": "myflexPbx.getCustomerList",
+      "method": "GET",
+      "path": "/myflex/customer",
+      "tags": [
+        "MyflexPbx"
+      ]
+    },
+    {
+      "operationId": "myflexPbx.getExtensionList",
+      "method": "GET",
+      "path": "/myflex/extension",
+      "tags": [
+        "MyflexPbx"
+      ],
+      "parameters": [
+        {
+          "name": "customerId",
+          "in": "query",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "myflexPbx.getFollowMeList",
+      "method": "POST",
+      "path": "/myflex/followme",
+      "tags": [
+        "MyflexPbx"
+      ],
+      "requestBody": {}
+    },
+    {
+      "operationId": "products.listCampaignsProducts",
+      "method": "GET",
+      "path": "/campaign/products",
+      "tags": [
+        "Products"
+      ]
+    }
+  ],
+  "tokenCount": 267
+}

@@ -1,0 +1,182 @@
+{
+  "module": "auditor",
+  "label": "Auditor",
+  "version": "0.0.1",
+  "generatedAt": "2026-01-14T20:29:01.271Z",
+  "endpoints": [
+    {
+      "operationId": "agentAuditor.getForLeadAndRecordings",
+      "method": "GET",
+      "path": "/autoAudit/get-audits",
+      "tags": [
+        "AgentAuditor"
+      ],
+      "parameters": [
+        {
+          "name": "lead_id",
+          "in": "query",
+          "required": true,
+          "type": "integer"
+        },
+        {
+          "name": "recording_ids[]",
+          "in": "query",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "operationId": "agentAuditor.getAuditoryConversation",
+      "method": "GET",
+      "path": "/autoAudit/get-conversation/{requestId}",
+      "tags": [
+        "AgentAuditor"
+      ],
+      "parameters": [
+        {
+          "name": "requestId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "operationId": "agentAuditor.getLastSummary",
+      "method": "GET",
+      "path": "/autoAudit/get-last-summary",
+      "tags": [
+        "AgentAuditor"
+      ]
+    },
+    {
+      "operationId": "agentAuditor.getTranscriptForAudit",
+      "method": "GET",
+      "path": "/autoAudit/get-transcript-for-audit/{auditId}",
+      "tags": [
+        "AgentAuditor"
+      ],
+      "parameters": [
+        {
+          "name": "auditId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "auditor.getAuditsForView",
+      "method": "POST",
+      "path": "/auditor/get-auditor-list",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.sendFeedback",
+      "method": "POST",
+      "path": "/auditor/send-feedback",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.changeLeadManagement",
+      "method": "POST",
+      "path": "/auditor/change-lead-management",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.markAuditoriesAsArchived",
+      "method": "POST",
+      "path": "/auditor/mark-auditories-as-archived",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.markAuditoriesAsNotArchived",
+      "method": "POST",
+      "path": "/auditor/mark-auditories-as-not-archived",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.getAuditoriesListForSupervisor",
+      "method": "POST",
+      "path": "/auditor/get-auditor-list-for-supervisor",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.getAuditoriesListForRetail",
+      "method": "POST",
+      "path": "/auditor/get-auditor-list-for-retail",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.getAuditoriesListForUser",
+      "method": "POST",
+      "path": "/auditor/get-auditor-list-for-user",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.describeAuditoryForRequest",
+      "method": "GET",
+      "path": "/auditor/describe/{requestId}",
+      "tags": [
+        "Auditor"
+      ],
+      "parameters": [
+        {
+          "name": "requestId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "auditor.getOptionsForRequest",
+      "method": "GET",
+      "path": "/auditor/get-conversation-options/{requestId}",
+      "tags": [
+        "Auditor"
+      ],
+      "parameters": [
+        {
+          "name": "requestId",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "operationId": "auditor.getUsersWithAgentAuditories",
+      "method": "GET",
+      "path": "/auditor/get-agent-audited-users-list",
+      "tags": [
+        "Auditor"
+      ]
+    },
+    {
+      "operationId": "auditor.agentAuditRecordingForLead",
+      "method": "POST",
+      "path": "/autoAudit/agent-audit-lead-recording",
+      "tags": [
+        "Auditor"
+      ]
+    }
+  ],
+  "tokenCount": 668
+}

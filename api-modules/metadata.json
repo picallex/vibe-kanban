@@ -1,0 +1,43 @@
+{
+  "version": "0.0.1",
+  "source": "local",
+  "generatedAt": "2026-01-14T20:29:01.273Z",
+  "modules": [
+    {
+      "id": "paia-ai",
+      "file": "modules/paia-ai.json",
+      "endpointCount": 11,
+      "tokenCount": 464
+    },
+    {
+      "id": "auditor",
+      "file": "modules/auditor.json",
+      "endpointCount": 16,
+      "tokenCount": 668
+    },
+    {
+      "id": "dynamic-queues",
+      "file": "modules/dynamic-queues.json",
+      "endpointCount": 19,
+      "tokenCount": 998
+    },
+    {
+      "id": "integrations",
+      "file": "modules/integrations.json",
+      "endpointCount": 16,
+      "tokenCount": 1135
+    },
+    {
+      "id": "infrastructure",
+      "file": "modules/infrastructure.json",
+      "endpointCount": 7,
+      "tokenCount": 267
+    },
+    {
+      "id": "system",
+      "file": "modules/system.json",
+      "endpointCount": 6,
+      "tokenCount": 192
+    }
+  ]
+}
