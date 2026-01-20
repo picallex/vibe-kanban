@@ -45,6 +45,9 @@ import { Workspaces } from '@/pages/ui-new/Workspaces';
 import { WorkspacesLanding } from '@/pages/ui-new/WorkspacesLanding';
 import { ElectricTestPage } from '@/pages/ui-new/ElectricTestPage';
 
+// JPBot custom extensions
+import { customRoutes } from '@/custom/routes';
+
 const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
 function AppContent() {
@@ -197,6 +200,9 @@ function AppContent() {
               <Route path="electric-test" element={<ElectricTestPage />} />
               <Route path=":workspaceId" element={<Workspaces />} />
             </Route>
+
+            {/* ========== JPBOT CUSTOM ROUTES ========== */}
+            {customRoutes}
           </SentryRoutes>
         </SearchProvider>
       </ThemeProvider>

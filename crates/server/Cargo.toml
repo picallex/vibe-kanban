@@ -56,3 +56,8 @@ dotenv = "0.15"
 [features]
 default = []
 qa-mode = ["services/qa-mode", "executors/qa-mode"]
+jpbot-custom = ["dep:jpbot-extensions"]
+
+[dependencies.jpbot-extensions]
+path = "../jpbot-extensions"
+optional = true

@@ -6,6 +6,10 @@ use tower_http::validate_request::ValidateRequestHeaderLayer;
 
 use crate::{DeploymentImpl, middleware};
 
+// JPBot custom extensions (only compiled when feature is enabled)
+#[cfg(feature = "jpbot-custom")]
+pub mod jpbot_custom;
+
 pub mod approvals;
 pub mod config;
 pub mod containers;
@@ -47,7 +51,13 @@ pub fn router(deployment: DeploymentImpl) -> IntoMakeService<Router> {
         .merge(scratch::router(&deployment))
         .merge(sessions::router(&deployment))
         .merge(terminal::router())
-        .nest("/images", images::routes())
+        .nest("/images", images::routes());
+
+    // Add JPBot custom routes when feature is enabled
+    #[cfg(feature = "jpbot-custom")]
+    let base_routes = base_routes.nest("/custom", jpbot_custom::router());
+
+    let base_routes = base_routes
         .layer(ValidateRequestHeaderLayer::custom(
             middleware::validate_origin,
         ))
